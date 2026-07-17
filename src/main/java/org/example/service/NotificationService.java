@@ -3,6 +3,7 @@ package org.example.service;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.NotificationRequest;
 import org.example.dto.NotificationResponse;
+import org.example.exception.NotificationNotFoundException;
 import org.example.model.Notification;
 import org.example.model.NotificationStatus;
 import org.example.repository.NotificationRepository;
@@ -39,7 +40,7 @@ public class NotificationService {
     public Notification get(UUID id) {
 
         return repository.findById(id)
-                .orElseThrow();
+                .orElseThrow(() -> new NotificationNotFoundException(id));
     }
 
 }

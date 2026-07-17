@@ -20,7 +20,7 @@ public class Notification {
 
     private String message;
 
-    private String channel;
+    private NotificationChannel channel;
 
     private NotificationStatus status;
 
