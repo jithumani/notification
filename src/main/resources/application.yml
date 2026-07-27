@@ -5,6 +5,18 @@ spring:
 server:
   port: 8080
 
+rate-limit:
+  endpoints:
+    notifications-create:
+      capacity: 5
+      refillTokens: 5
+      refillDuration: 60s
+
+    notifications-get:
+      capacity: 20
+      refillTokens: 20
+      refillDuration: 60s
+
 management:
   endpoints:
     web:

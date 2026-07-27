@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.dto.NotificationRequest;
 import org.example.dto.NotificationResponse;
 import org.example.model.Notification;
+import org.example.ratelimit.RateLimited;
 import org.example.service.NotificationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ public class NotificationController {
     private final NotificationService service;
 
     @PostMapping
+    @RateLimited(key = "notifications-create")
     public ResponseEntity<NotificationResponse> create(
             @Valid @RequestBody NotificationRequest request) {
 
